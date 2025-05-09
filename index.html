@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Hash Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        apple: {
+                            gray: '#f5f5f7',
+                            blue: '#0071e3',
+                            dark: '#1d1d1f'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-full bg-apple-gray font-sans antialiased text-apple-dark">
+    <div class="min-h-full flex flex-col">
+        <!-- Header -->
+        <header class="backdrop-blur-md border-b border-gray-200 sticky top-0 z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <h1 class="text-2xl font-medium">Hash Generator</h1>
+                    </div>
+                    <div class="flex items-center">
+                        <button id="theme-toggle" class="flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-apple-blue/50 transition">
+                            <span id="light-icon" class="sun-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <span id="dark-icon" class="moon-icon hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                                </svg>
+                            </span>
+                            <span class="ml-2 text-sm font-medium">Theme</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="flex-1">
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 sm:px-0">
+                    <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 lg:p-10">
+                        <h2 class="text-2xl font-semibold mb-6">Generate Content Hash</h2>
+                        
+                        <div class="space-y-6">
+                            <!-- Algorithm Selector -->
+                            <div>
+                                <label for="algorithm" class="block text-sm font-medium text-gray-700 mb-1">Hash Algorithm</label>
+                                <select id="algorithm" class="rounded-lg border-gray-300 shadow-sm w-full md:w-64 focus:border-apple-blue focus:ring focus:ring-apple-blue/20 transition">
+                                    <option value="MD5" selected>MD5</option>
+                                    <option value="SHA-256">SHA-256</option>
+                                    <option value="SHA-384">SHA-384</option>
+                                    <option value="SHA-512">SHA-512</option>
+                                    <option value="SHA-1">SHA-1</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Input Area -->
+                            <div>
+                                <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Content</label>
+                                <textarea id="content" rows="6" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-apple-blue focus:ring focus:ring-apple-blue/20 transition px-4 py-3" placeholder="Enter content to hash..."></textarea>
+                            </div>
+                            
+                            <!-- Generate Button -->
+                            <div>
+                                <button id="generate-btn" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-apple-blue hover:bg-apple-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue/80 transition">
+                                    Generate Hash
+                                </button>
+                            </div>
+                            
+                            <!-- Result Area -->
+                            <div id="result-container" class="hidden">
+                                <label for="result" class="block text-sm font-medium text-gray-700 mb-1">Hash Result</label>
+                                <div class="flex">
+                                    <button id="copy-btn" class="inline-flex items-center px-4 py-2 border border-r-0 border-gray-300 text-sm font-medium rounded-l-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue">
+                                        Copy
+                                    </button>
+                                    <input type="text" id="result" readonly class="flex-grow rounded-r-lg border-gray-300 shadow-sm focus:border-apple-blue focus:ring focus:ring-apple-blue/20 transition bg-gray-50 px-4 py-2" placeholder="Hash will appear here...">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2">Note: Only the first 8 characters of the hash are displayed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
