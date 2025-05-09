@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Hash Generator</title>
+    <title>Content Hash ID Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <script>
@@ -29,7 +29,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
-                        <h1 class="text-2xl font-medium">Hash Generator</h1>
+                        <h1 class="text-2xl font-medium">Hash ID Generator</h1>
                     </div>
                     <div class="flex items-center">
                         <button id="theme-toggle" class="flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-apple-blue/50 transition">
@@ -55,7 +55,7 @@
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <div class="px-4 py-6 sm:px-0">
                     <div class="bg-white rounded-2xl shadow-sm p-6 md:p-8 lg:p-10">
-                        <h2 class="text-2xl font-semibold mb-6">Generate Content Hash</h2>
+                        <h2 class="text-2xl font-semibold mb-6">Generate Content Hash ID</h2>
                         
                         <div class="space-y-6">
                             <!-- Algorithm Selector -->
@@ -79,18 +79,18 @@
                             <!-- Generate Button -->
                             <div>
                                 <button id="generate-btn" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-apple-blue hover:bg-apple-blue/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue/80 transition">
-                                    Generate Hash
+                                    Generate Hash ID
                                 </button>
                             </div>
                             
                             <!-- Result Area -->
                             <div id="result-container" class="hidden">
-                                <label for="result" class="block text-sm font-medium text-gray-700 mb-1">Hash Result</label>
+                                <label for="result" class="block text-sm font-medium text-gray-700 mb-1">Result</label>
                                 <div class="flex">
                                     <button id="copy-btn" class="inline-flex items-center px-4 py-2 border border-r-0 border-gray-300 text-sm font-medium rounded-l-lg bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-blue">
                                         Copy
                                     </button>
-                                    <input type="text" id="result" readonly class="flex-grow rounded-r-lg border-gray-300 shadow-sm focus:border-apple-blue focus:ring focus:ring-apple-blue/20 transition bg-gray-50 px-4 py-2" placeholder="Hash will appear here...">
+                                    <input type="text" id="result" readonly class="flex-grow rounded-r-lg border-gray-300 shadow-sm focus:border-apple-blue focus:ring focus:ring-apple-blue/20 transition bg-gray-50 px-4 py-2" placeholder="Hash ID will appear here...">
                                 </div>
                                 <p class="text-xs text-gray-500 mt-2">Note: Only the first 8 characters of the hash are displayed.</p>
                             </div>

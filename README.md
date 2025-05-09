@@ -1,6 +1,6 @@
-# Content Hash Generator
+# Content Hash ID Generator
 
-Generate content hashes using various algorithms.
+Generate content hash IDs using various algorithms.
 
 ## Features
 
@@ -13,6 +13,6 @@ Generate content hashes using various algorithms.
 1. Open `index.html` in your web browser
 2. Select a hash algorithm from the dropdown menu (MD5 being the default)
 3. Enter the content you want to hash in the text area
-4. Click the "Generate Hash" button
-5. The hash will appear in the result box
-6. Click the "Copy" button to copy the hash to your clipboard
+4. Click the "Generate Hash ID" button
+5. The hash ID will appear in the result box
+6. Click the "Copy" button to copy the hash ID to your clipboard

@@ -30,17 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get only the first 8 characters
             const hash = fullHash.substring(0, 8);
             
-            resultInput.value = hash;
+            resultInput.value = "id-" + hash;
             resultContainer.classList.remove('hidden');
             
-            showNotification('Hash generated successfully', 'success');
+            showNotification('Hash ID generated successfully', 'success');
         } catch (error) {
             console.error('Error generating hash:', error);
             showNotification('Error generating hash: ' + error.message, 'error');
         }
     });
 
-    // Copy hash to clipboard
+    // Copy hash ID to clipboard
     copyBtn.addEventListener('click', () => {
         resultInput.select();
         document.execCommand('copy');
